@@ -4,21 +4,206 @@ var size = {
     height: window.innerHeight
 };
 
+var scene, camera, renderer;
+
+ //宝石のマテリアル
+ var jwellMaterial;
+
+ //1月：ガーネット
+ var garnet = new THREE.MeshPhysicalMaterial({
+     color:0xff0000,
+     metalness: 0.0,
+     roughness: 0.2,
+     transmission: 1.0,
+     ior: 1.4,
+     reflectivity: 0.9,
+     thickness: 2.0,
+     clearcoat: 2,
+     clearcoatRoughness: 0.1,
+     normalScale: new THREE.Vector2(0.3, 0.3),
+     clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+ });
+
+ //2月：アメシスト
+ var amethyst = new THREE.MeshPhysicalMaterial({
+    color:0xb34dff,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//3月：アクアマリン
+var aquamarine = new THREE.MeshPhysicalMaterial({
+    color:0x6ed0fa,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//4月：ダイヤモンド
+var diamond = new THREE.MeshPhysicalMaterial({
+    color:0xffffff,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//5月：エメラルド
+var emerald = new THREE.MeshPhysicalMaterial({
+    color:0x02966c,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//6月：ムーンストーン
+var moonstone = new THREE.MeshPhysicalMaterial({
+    color:0xe8e8e8,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//7月：ルビー
+var ruby = new THREE.MeshPhysicalMaterial({
+    color:0xb8003a,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//8月：ペリドット
+var peridot = new THREE.MeshPhysicalMaterial({
+    color:0x9ffa2f,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//9月：サファイア
+var sapphire = new THREE.MeshPhysicalMaterial({
+    color:0x002e8a,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//10月：トルマリン
+var tourmarine = new THREE.MeshPhysicalMaterial({
+    color:0x7ed5e0,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//11月：シトリン
+var citrine = new THREE.MeshPhysicalMaterial({
+    color:0xf2e05a,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
+//12月：タンザナイト
+var tanzanite = new THREE.MeshPhysicalMaterial({
+    color:0x2e69ff,
+    metalness: 0.0,
+    roughness: 0.2,
+    transmission: 1.0,
+    ior: 1.4,
+    reflectivity: 0.9,
+    thickness: 2.0,
+    clearcoat: 2,
+    clearcoatRoughness: 0.1,
+    normalScale: new THREE.Vector2(0.3, 0.3),
+    clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
+});
+
 function init(){
 
-    var scene = new THREE.Scene();
+    scene = new THREE.Scene();
 
-    var renderer = new THREE.WebGLRenderer({
+    renderer = new THREE.WebGLRenderer({
         antialias:true,
         alpha:true,
     });
-    renderer.setClearColor(0x001747);
+    renderer.setClearColor(0x111111);
     renderer.setSize(size.width, size.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
-    var camera = new THREE.PerspectiveCamera(45, size.width/size.height, 1, 1000);
+    camera = new THREE.PerspectiveCamera(45, size.width/size.height, 1, 1000);
     camera.position.set(0,4,1);
     camera.lookAt(0,0,0);
 
@@ -28,7 +213,7 @@ function init(){
     //平面
     var planeGeometry = new THREE.PlaneGeometry(100,100,2);
     var planeMaterial = new THREE.MeshPhongMaterial({
-        color:0x0036ab,
+        color:0x333333,
         side:THREE.DoubleSide,
         transparent: true,
         opacity: 0.5,
@@ -65,21 +250,7 @@ function init(){
     spotLight2.castShadow = true;
     scene.add(spotLight2);
 
-    //IORマテリアル
-    const iorMaterial = new THREE.MeshPhysicalMaterial({
-        color:0xff0000,
-        metalness: 0.0,
-        roughness: 0.2,
-        transmission: 1.0,
-        ior: 1.4,
-        reflectivity: 0.9,
-        thickness: 2.0,
-        clearcoat: 2,
-        clearcoatRoughness: 0.1,
-        normalScale: new THREE.Vector2(0.3, 0.3),
-        clearcoatNormalScale: new THREE.Vector2(0.2, 0.2),
-    });
-
+   
     //ゴールドのマテリアル
     const goldMaterial = new THREE.MeshPhysicalMaterial({
         color: 0xffd747,
@@ -87,17 +258,16 @@ function init(){
         roughness: 0.3,
     });
 
-    //シルバーのマテリアル
-    const silverMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xaaaaaa,
-        metalness: 0.9,
-        roughness: 0.5,
-    });
+   
 
     //モデルの読み込み
     var loader = new THREE.OBJLoader();
     loader.load("./models/ring.obj", function(loadedMesh){
-        loadedMesh.children[0].material = iorMaterial;
+        // for(let i=0; i<loadedMesh.children.length; i++){
+        //     console.log(loadedMesh.children[i]);
+        // }  
+        jwellMaterial = garnet;
+        loadedMesh.children[0].material = jwellMaterial;
         loadedMesh.children[1].material = goldMaterial;
         loadedMesh.children[2].material = goldMaterial;
         
@@ -126,6 +296,69 @@ function init(){
             mesh.rotation.z += 0.01;
         }  
     }
+
+    //GUI
+    const gui = new dat.GUI();
+
+    class Parameters{
+        constructor(){
+            this.birthday = 'January'
+            this.changeMaterial = function(){
+                switch(this.birthday){
+                    case 'January':
+                        jwellMaterial = garnet;
+                        break;
+                    case 'February':
+                        jwellMaterial = amethyst;
+                        break;
+                    case 'March':
+                        jwellMaterial = aquamarine;
+                        break;
+                    case 'April':
+                        jwellMaterial = diamond;
+                        break;
+                    case 'May':
+                        jwellMaterial = emerald;
+                        break;
+                    case 'June':
+                        jwellMaterial = moonstone;
+                        break;
+                    case 'July':
+                        jwellMaterial = ruby;
+                        break;
+                    case 'August':
+                        jwellMaterial = peridot;
+                        break;
+                    case 'September':
+                        jwellMaterial = sapphire;
+                        break;
+                    case 'Octber':
+                        jwellMaterial = tourmarine;
+                        break;
+                    case 'November':
+                        jwellMaterial = citrine;
+                        break;
+                    case 'December':
+                        jwellMaterial = tanzanite;
+                        break;
+                    default:
+                        jwellMaterial = garnet;
+                        break;
+                    }
+                }
+            }
+        }
+    
+
+    const param = new Parameters();
+
+    //guiのbirthdayの値を変更したら、jwellMaterialを変更する
+    gui.add(param, 'birthday', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octber', 'November', 'December'], 'January').onChange(function(){
+        param.changeMaterial();
+        mesh.children[0].material = jwellMaterial;
+    });
+       
+    //console.log(gui);
 }
 
 window.onload = init;
@@ -148,3 +381,4 @@ function onResize(){
 function degToRad(deg){
     return deg * Math.PI / 180;
 }
+
