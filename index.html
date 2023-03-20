@@ -2,18 +2,67 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Three.js Model Loading</title>
+        <title>Birth Stone Generator</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,shrink-to-fit=no">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/dat.gui.css">
     </head>
     <body>
         <div id="webgl"></div>
+
+        <div id="text">
+            <h1>Birth Stone Generator</h1>
+            <h2 id="month"></h3>
+            <h3 id="stone"></h2>
+            <p id="japaneseName"></p>
+            <p id="meaning"></p>
+        </div>
+
+        <div class="btns">
+            <div class="btn" id="January">
+                <span class="circle"></span><p>January</p>
+            </div>
+            <div class="btn" id="Febrary">
+                <span class="circle"></span><p>Febrary</p>
+            </div>
+            <div class="btn" id="March">
+                <span class="circle"></span><p>March</p>
+            </div>
+            <div class="btn" id="April">
+                <span class="circle"></span><p>April</p>
+            </div>
+            <div class="btn" id="May">
+                <span class="circle"></span><p>May</p>
+            </div>
+            <div class="btn" id="June">
+                <span class="circle"></span><p>June</p>
+            </div>
+            <div class="btn" id="July">
+                <span class="circle"></span><p>July</p>
+            </div>
+            <div class="btn" id="August">
+                <span class="circle"></span><p>August</p>
+            </div>
+            <div class="btn" id="September">
+                <span class="circle"></span><p>September</p>
+            </div>
+            <div class="btn" id="October">
+                <span class="circle"></span><p>October</p>
+            </div>
+            <div class="btn" id="November">
+                <span class="circle"></span><p>November</p>
+            </div>
+            <div class="btn" id="December">
+                <span class="circle"></span><p>December</p>
+            </div>
+        </div>
 
         <script src="https://unpkg.com/three@0.142.0/build/three.min.js"></script>
         <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/MTLLoader.js"></script>
         <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/OBJLoader.js"></script>
         <script src="https://unpkg.com/three@0.142.0/examples/js/controls/OrbitControls.js"></script>
-        <script src="js/dat.gui.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>

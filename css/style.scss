@@ -1,7 +1,150 @@
-html,body{
+*{
     margin: 0;
     padding: 0;
+}
+html,body{
     overflow: hidden;
     list-style: none;
+    font-family: 'Cormorant Garamond', serif;
 }
 
+#text{
+    position: fixed;
+    z-index: 999;
+    top: 2%;
+    left: 2%;
+    color: #fff;
+    @media screen and (max-width: 740px) {
+        top: auto;
+        bottom: 2%;
+    }
+    h1{
+        font-size: 1.0rem;
+        line-height: 3.0em;
+    }
+    h2{
+        font-size: 2.8rem;
+        line-height: 1.0em;
+        border-bottom: 1px solid #fff;
+    }
+    h3{
+        font-size: 4.5rem;
+        line-height: 1.5em;
+    }
+    p{
+        font-size:1.0rem;
+        line-height: 2.0em;
+        &#meaning{
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.btns{
+    position: fixed;
+    z-index: 999;
+    bottom: 2%;
+    right: 2%;
+    left: 2%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    @media screen and (max-width:740px) {
+        max-width: 10%;
+        flex-direction: column;
+        left: auto;
+        top: 0%;
+        right: 8%;
+    }
+    div.btn{
+        display: block;
+        width: 8%;
+        text-align: center;
+        margin: 1.0rem;
+        cursor: pointer;
+        transition: 0.3s;
+        @media screen and (max-width: 740px){
+            width: 100%;
+            margin: 0.5rem;
+        }
+        &:hover{
+            transform: scale(1.2);
+        }
+        span.circle{
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            border: 2px solid #fff;
+            margin: 0 auto;
+            @media screen and (max-width:740px) {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    }
+   
+    #January{
+        span.circle{
+            background-color: #a80000;
+        }
+    }
+    #Febrary{
+        span.circle{
+            background-color: #7b009d;
+        }
+    }
+    #March{
+        span.circle{
+            background-color: #4fd0ff;
+        }
+    }
+    #April{
+        span.circle{
+            background-color: #ccc;
+        }
+    }
+    #May{
+        span.circle{
+            background-color: #00894b;
+        }
+    }
+    #June{
+        span.circle{
+            background-color: #ececec;
+        }
+    }
+    #July{
+        span.circle{
+            background-color: #ca0080;
+        }
+    }
+    #August{
+        span.circle{
+            background-color: #6fc400;
+        }
+    }
+    #September{
+        span.circle{
+            background-color: #0022cc;
+        }
+    }
+    #October{
+        span.circle{
+            background-color: #ebf9e0;
+        }
+    }
+    #November{
+        span.circle{
+            background-color: #e75608;
+        }
+    }
+    #December{
+        span.circle{
+            background-color: #03fbff;
+        }
+    }
+}
