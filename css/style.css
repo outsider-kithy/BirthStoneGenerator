@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 
 html, body {
@@ -47,6 +49,31 @@ html, body {
 
 #text p#meaning {
   font-size: 1.5rem;
+}
+
+#ss {
+  position: fixed;
+  z-index: 999;
+  top: 2%;
+  right: 1%;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #000;
+  transition: 0.3s;
+}
+
+#ss:hover {
+  transform: translateY(5px);
+}
+
+#ss:active {
+  color: #000;
+}
+
+#ss:visited {
+  color: #000;
 }
 
 .btns {

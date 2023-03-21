@@ -11,6 +11,7 @@ function init(){
     scene = new THREE.Scene();
 
     renderer = new THREE.WebGLRenderer({
+        preserveDrawingBuffer: true,//これがtrueじゃないと画像が真っ黒になる！
         antialias:true,
         alpha:true,
     });
@@ -658,4 +659,21 @@ for (var btn of btns){
             meaning.innerHTML = "石言葉：" + text[11]["Attribute"]["Meaning"];
         });
 }
+
+
+
+var ss = document.getElementById("ss");
+ss.addEventListener("click",function(){
+    //renderer.domElementに描画された内容をJPG形式で保存
+    var output = document.getElementById("webgl").children[0];
+    var dataURL = output.toDataURL("image/jpeg");
+    //console.log(dataURL);
+    //保存した画像をダウンロードするaタグを生成
+    var a = document.createElement("a");
+    a.download = 'birthstone.jpg';
+    a.href = dataURL;
+    a.click();
+});
+    
+
 

@@ -1,6 +1,8 @@
 *{
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 html,body{
     overflow: hidden;
@@ -37,6 +39,28 @@ html,body{
         &#meaning{
             font-size: 1.5rem;
         }
+    }
+}
+
+#ss{
+    position: fixed;
+    z-index: 999;
+    top: 2%;
+    right: 1%;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #000;
+    transition: 0.3s;
+    &:hover{
+        transform: translateY(5px);
+    }
+    &:active{
+        color: #000;
+    }
+    &:visited{
+        color: #000;
     }
 }
 
